@@ -9,9 +9,10 @@ import { toast } from "../hooks/use-toast";
 interface PromptCardProps {
   prompt: Prompt;
   onToggleFavorite?: (id: string) => void;
+  onTagClick?: (tag: string) => void;
 }
 
-export function PromptCard({ prompt, onToggleFavorite }: PromptCardProps) {
+export function PromptCard({ prompt, onToggleFavorite, onTagClick }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -123,11 +124,17 @@ export function PromptCard({ prompt, onToggleFavorite }: PromptCardProps) {
 
         <div className="flex flex-wrap gap-2 pt-2">
           {prompt.tags.map(tag => (
-            <Badge key={tag} variant="outline" className="text-[9px] uppercase tracking-tighter font-black px-2 py-0.5 rounded-full border-primary/20 bg-primary/5 text-primary hover:bg-primary hover:text-white transition-all cursor-default">
+            <Badge
+              key={tag}
+              variant="outline"
+              className="text-[9px] uppercase tracking-tighter font-black px-2 py-0.5 rounded-full border-primary/20 bg-primary/5 text-primary hover:bg-primary hover:text-white transition-all cursor-pointer"
+              onClick={() => onTagClick?.(tag)}
+            >
               #{tag}
             </Badge>
           ))}
         </div>
+
       </CardContent>
 
       <CardFooter className="pt-4 pb-6 px-6 relative">

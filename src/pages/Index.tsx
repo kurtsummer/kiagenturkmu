@@ -63,7 +63,14 @@ export default function Index() {
     setPrompts(prev => prev.map(p => p.id === id ? { ...p, isFavorite: !p.isFavorite } : p));
   };
 
+  const handleTagClick = (tag: string) => {
+    setFilters(prev => ({ ...prev, search: tag }));
+    // Smooth scroll to search filters if needed, but the search is reactive
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleResetFilters = () => {
+
     setFilters({
       search: "",
       mediaType: "",
@@ -171,12 +178,14 @@ export default function Index() {
             {filteredPrompts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPrompts.map((prompt) => (
-                  <PromptCard 
-                    key={prompt.id} 
-                    prompt={prompt} 
+                  <PromptCard
+                    key={prompt.id}
+                    prompt={prompt}
                     onToggleFavorite={handleToggleFavorite}
+                    onTagClick={handleTagClick}
                   />
                 ))}
+
               </div>
             ) : (
               <div className="py-24 text-center border-4 border-dashed rounded-[2.5rem] bg-white dark:bg-zinc-900/40 border-primary/10">
