@@ -3,7 +3,9 @@ import { mockPrompts } from "../data/mockData";
 import { PromptCard } from "../components/PromptCard";
 import { PromptFilters } from "../components/PromptFilters";
 import { AddPromptModal } from "../components/AddPromptModal";
+import { EditPromptModal } from "../components/EditPromptModal";
 import { PromptGenerator } from "../components/PromptGenerator";
+
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Prompt } from "../types/prompt";
 import { Sparkles, Database, LayoutGrid, Wand2, Heart, Download, Upload } from "lucide-react";
@@ -25,7 +27,10 @@ export default function Index() {
     return mockPrompts;
   });
 
+  const [editingPrompt, setEditingPrompt] = useState<Prompt | null>(null);
+
   const [filters, setFilters] = useState({
+
     search: "",
     mediaType: "",
     cameraType: "",
@@ -64,7 +69,19 @@ export default function Index() {
     setPrompts(prev => prev.map(p => p.id === id ? { ...p, isFavorite: !p.isFavorite } : p));
   };
 
+  const handleDeletePrompt = (id: string) => {
+    if (window.confirm("Bist du sicher, dass du diesen Prompt löschen möchtest?")) {
+      setPrompts(prev => prev.filter(p => p.id !== id));
+      toast({ title: "Gelöscht", description: "Der Prompt wurde aus der Datenbank entfernt." });
+    }
+  };
+
+  const handleUpdatePrompt = (updatedPrompt: Prompt) => {
+    setPrompts(prev => prev.map(p => p.id === updatedPrompt.id ? updatedPrompt : p));
+  };
+
   const handleTagClick = (tag: string) => {
+
     setFilters(prev => ({ ...prev, search: tag }));
     // Smooth scroll to search filters if needed, but the search is reactive
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -249,6 +266,8 @@ export default function Index() {
                     prompt={prompt}
                     onToggleFavorite={handleToggleFavorite}
                     onTagClick={handleTagClick}
+                    onEdit={setEditingPrompt}
+                    onDelete={handleDeletePrompt}
                   />
                 ))}
 
@@ -274,6 +293,12 @@ export default function Index() {
           <p className="text-[10px] text-muted-foreground mt-2 uppercase tracking-widest">© {new Date().getFullYear()} - Alle Rechte vorbehalten</p>
         </div>
       </footer>
+
+      <EditPromptModal
+        prompt={editingPrompt}
+        onClose={() => setEditingPrompt(null)}
+        onUpdate={handleUpdatePrompt}
+      />
     </div>
   );
 }
