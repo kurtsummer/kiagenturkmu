@@ -2,256 +2,108 @@ import { Prompt } from '../types/prompt';
 
 const generateMockPrompts = (): Prompt[] => {
   const basePrompts = [
-    {
-      title: "Cyberpunk Regen",
-      subject: "A cyborg character walking through a rain-slicked Tokyo alley, neon signs reflecting in puddles",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Halbtotale", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["cyberpunk", "regen", "nacht"]
-    },
-    {
-      title: "Berghütte im Nebel",
-      subject: "A lonely wooden cabin on a steep mountain ridge surrounded by thick morning mist",
-      mediaType: "Bild", cameraType: "Mittelformat", filmStock: "Fujifilm Superia", perspective: "Weitwinkel", lighting: "Bewölkt", mood: "Raw/Authentisch", tags: ["natur", "berge", "nebel"]
-    },
-    {
-      title: "80er Jahre Skatepark",
-      subject: "Teens hanging out at a sunny California skatepark in 1985, wearing vintage fashion",
-      mediaType: "Bild", cameraType: "Analog", filmStock: "Kodak Gold 200", perspective: "Schräger Winkel", lighting: "Goldene Stunde", mood: "Nostalgisch", tags: ["80s", "retro", "skate"]
-    },
-    {
-      title: "Tiefsee Qualle",
-      subject: "A bioluminescent jellyfish floating in the absolute darkness of the deep ocean",
-      mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Standard Digital", perspective: "Makro", lighting: "Neon-Licht", mood: "Ätherisch", tags: ["ozean", "qualle", "biolumineszenz"]
-    },
-    {
-      title: "Wüstenkarawane",
-      subject: "A long caravan of camels crossing the Sahara dunes during a sandstorm",
-      mediaType: "Video", cameraType: "Großformat", filmStock: "Technicolor", perspective: "Vogelperspektive", lighting: "Hartes Licht", mood: "Professionell", tags: ["wüste", "kamele", "episch"]
-    },
-    {
-      title: "Retro Autokino",
-      subject: "Classic cars parked at a drive-in theater, a black and white movie playing on the large screen",
-      mediaType: "Bild", cameraType: "35mm Film", filmStock: "Kodak Portra 400", perspective: "Totale", lighting: "Düster", mood: "Nostalgisch", tags: ["kino", "autos", "nacht"]
-    },
-    {
-      title: "Zukunftstadt",
-      subject: "Sleek white skyscrapers with floating gardens and flying vehicles in a utopian city",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Natürliches Licht", mood: "Futuristisch", tags: ["sci-fi", "utopie", "stadt"]
-    },
-    {
-      title: "Waldgeist",
-      subject: "A mystical creature made of moss and tree bark blending into an ancient forest",
-      mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "CineStill 800T", perspective: "Nahaufnahme", lighting: "Weiches Licht", mood: "Traumhaft", tags: ["fantasy", "wald", "magie"]
-    },
-    {
-      title: "Streetfood Markt",
-      subject: "Busy night market in Bangkok, steam rising from woks, intense colors and motion",
-      mediaType: "Video", cameraType: "GoPro", filmStock: "Standard Digital", perspective: "Ego-Perspektive", lighting: "Neon-Licht", mood: "Lebhaft", tags: ["food", "reise", "pov"]
-    },
-    {
-      title: "Polar-Expedition",
-      subject: "An icebreaker ship crushing through thick arctic ice under the northern lights",
-      mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Ektachrome", perspective: "Weitwinkel", lighting: "Düster", mood: "Raw/Authentisch", tags: ["arktis", "aurora", "schiff"]
-    },
-    {
-      title: "Alter Jazzclub",
-      subject: "A saxophone player performing on a dimly lit stage with cigarette smoke curling in the air",
-      mediaType: "Bild", cameraType: "Vintage", filmStock: "Schwarz-Weiß", perspective: "Nahaufnahme", lighting: "Düster", mood: "Nostalgisch", tags: ["jazz", "musik", "club"]
-    },
-    {
-      title: "Weltraum-Station",
-      subject: "Interior of a high-tech space station corridor with curved walls and white lighting",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Studio-Beleuchtung", mood: "Futuristisch", tags: ["weltraum", "innenraum", "minimalismus"]
-    },
-    {
-      title: "Sommerwiese Makro",
-      subject: "A honeybee covered in pollen landing on a vibrant lavender flower",
-      mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Kodak Gold 200", perspective: "Extreme Nahaufnahme", lighting: "Natürliches Licht", mood: "Lebhaft", tags: ["makro", "natur", "biene"]
-    },
-    {
-      title: "Surfer Welle",
-      subject: "A surfer inside a massive turquoise tube wave at Pipeline",
-      mediaType: "Video", cameraType: "GoPro", filmStock: "Standard Digital", perspective: "Ego-Perspektive", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["surfen", "meer", "action"]
-    },
-    {
-      title: "Dampfzug in Alpen",
-      subject: "A vintage steam locomotive crossing a high stone bridge in the Swiss Alps",
-      mediaType: "Bild", cameraType: "35mm Film", filmStock: "Kodak Portra 400", perspective: "Weitwinkel", lighting: "Bewölkt", mood: "Nostalgisch", tags: ["zug", "berge", "vintage"]
-    },
-    {
-      title: "Geisterstadt Salon",
-      subject: "The interior of an abandoned wild west salon with dust motes dancing in sunbeams",
-      mediaType: "Bild", cameraType: "Großformat", filmStock: "Polaroid", perspective: "Halbtotale", lighting: "Natürliches Licht", mood: "Dunkel", tags: ["wildwest", "verlassen", "staub"]
-    },
-    {
-      title: "Neon Racing",
-      subject: "High-speed night race of supercars on a highway with light trails and motion blur",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Froschperspektive", lighting: "Neon-Licht", mood: "Lebhaft", tags: ["rennen", "autos", "nacht"]
-    },
-    {
-      title: "Zugefrorener See",
-      subject: "Intricate patterns of bubbles trapped under the clear blue ice of Lake Baikal",
-      mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Ilford HP5", perspective: "Draufsicht", lighting: "Hartes Licht", mood: "Professionell", tags: ["eis", "winter", "abstrakt"]
-    },
-    {
-      title: "Mars Kolonie",
-      subject: "The first human base on Mars with red dust storms and giant glass domes",
-      mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Düster", mood: "Futuristisch", tags: ["mars", "planeten", "raumfahrt"]
-    },
-    {
-      title: "90er Rave",
-      subject: "Flash photography of a crowded warehouse rave in 1994, lasers and baggy clothes",
-      mediaType: "Bild", cameraType: "Analog", filmStock: "CineStill 800T", perspective: "Augenhöhe", lighting: "Neon-Licht", mood: "Nostalgisch", tags: ["90s", "party", "rave"]
-    },
-    {
-      title: "Insel Paradies",
-      subject: "An aerial view of a private tropical island with white sand and coral reefs",
-      mediaType: "Bild", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Natürliches Licht", mood: "Traumhaft", tags: ["strand", "insel", "urlaub"]
-    },
-    {
-      title: "Regenwald Wasserfall",
-      subject: "A hidden waterfall deep in the Amazon, exotic birds flying through the spray",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Fujifilm Superia", perspective: "Weitwinkel", lighting: "Weiches Licht", mood: "Lebhaft", tags: ["dschungel", "wasserfall", "vögel"]
-    },
-    {
-      title: "U-Bahn Station Noir",
-      subject: "A man in a trench coat waiting on a subway platform, shadows and flickering lights",
-      mediaType: "Bild", cameraType: "35mm Film", filmStock: "Schwarz-Weiß", perspective: "Symmetrisch", lighting: "Düster", mood: "Dunkel", tags: ["noir", "stadt", "u-bahn"]
-    },
-    {
-      title: "Bonsai Garten",
-      subject: "A serene Japanese zen garden with a perfectly trimmed ancient bonsai tree",
-      mediaType: "Bild", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Augenhöhe", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["japan", "zen", "bonsai"]
-    },
-    {
-      title: "Heißluftballons",
-      subject: "Hundreds of colorful hot air balloons rising over the fairy chimneys of Cappadocia",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Ektachrome", perspective: "Vogelperspektive", lighting: "Goldene Stunde", mood: "Ätherisch", tags: ["reisen", "ballon", "türkei"]
-    },
-    {
-      title: "Vulkan Ausbruch",
-      subject: "Slow motion lava flow from an erupting volcano at night, red glow and ash clouds",
-      mediaType: "Video", cameraType: "Großformat", filmStock: "Standard Digital", perspective: "Totale", lighting: "Düster", mood: "Raw/Authentisch", tags: ["natur", "vulkan", "lava"]
-    },
-    {
-      title: "Bibliothek der Magie",
-      subject: "Infinite library with floating books and glowing crystals on the tables",
-      mediaType: "Bild", cameraType: "Retro", filmStock: "CineStill 800T", perspective: "Totale", lighting: "Cinematisch", mood: "Traumhaft", tags: ["magie", "bücher", "fantasy"]
-    },
-    {
-      title: "Alpiner Sonnenaufgang",
-      subject: "The first light hitting the peaks of the Dolomites, reflection in a still lake",
-      mediaType: "Bild", cameraType: "Mittelformat", filmStock: "Kodak Portra 400", perspective: "Weitwinkel", lighting: "Goldene Stunde", mood: "Professionell", tags: ["berge", "see", "morgen"]
-    },
-    {
-      title: "Fashion Runway",
-      subject: "High fashion model walking on a mirrored runway with intense flash photography",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Froschperspektive", lighting: "Studio-Beleuchtung", mood: "Professionell", tags: ["mode", "model", "runway"]
-    },
-    {
-      title: "Gletscher Höhle",
-      subject: "Standing inside a deep blue ice cave under a glacier, light filtering through ice",
-      mediaType: "Bild", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Nahaufnahme", lighting: "Weiches Licht", mood: "Ätherisch", tags: ["eis", "höhle", "blau"]
-    },
-    {
-      title: "Altstadt Gasse",
-      subject: "A narrow cobblestone street in an Italian village at twilight, warm lamps turning on",
-      mediaType: "Bild", cameraType: "Vintage", filmStock: "Kodak Gold 200", perspective: "Halbtotale", lighting: "Goldene Stunde", mood: "Nostalgisch", tags: ["italien", "dorf", "abend"]
-    },
-    {
-      title: "Futuristische Küche",
-      subject: "A minimalist kitchen with holographic touchscreens and robotic arms cooking",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Studio-Beleuchtung", mood: "Futuristisch", tags: ["küche", "roboter", "zukunft"]
-    },
-    {
-      title: "Steampunk Stadt",
-      subject: "A Victorian city with brass machinery, steam pipes and giant flying zeppelins",
-      mediaType: "Bild", cameraType: "Analog", filmStock: "Technicolor", perspective: "Vogelperspektive", lighting: "Hartes Licht", mood: "Nostalgisch", tags: ["steampunk", "zeppelins", "victorian"]
-    },
-    {
-      title: "Eulen Augen",
-      subject: "Extreme close up of an owl's eyes dilating in the dark forest",
-      mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "CineStill 800T", perspective: "Extreme Nahaufnahme", lighting: "Düster", mood: "Raw/Authentisch", tags: ["eule", "tier", "nacht"]
-    },
-    {
-      title: "Strand Lagerfeuer",
-      subject: "Friends sitting around a crackling bonfire on the beach at night, stars visible above",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Kodak Portra 400", perspective: "Halbtotale", lighting: "Düster", mood: "Traumhaft", tags: ["feuer", "strand", "freunde"]
-    },
-    {
-      title: "Abstrakte Architektur",
-      subject: "The spiral staircase of a modern museum, shot from below to create geometric patterns",
-      mediaType: "Bild", cameraType: "Mittelformat", filmStock: "Standard Digital", perspective: "Froschperspektive", lighting: "Weiches Licht", mood: "Professionell", tags: ["architektur", "abstrakt", "geometrie"]
-    },
-    {
-      title: "Regnerisches London",
-      subject: "Red double-decker bus crossing a bridge in London during a typical grey rain",
-      mediaType: "Video", cameraType: "Vintage", filmStock: "VHS-Stil", perspective: "Totale", lighting: "Bewölkt", mood: "Nostalgisch", tags: ["london", "regen", "vhs"]
-    },
-    {
-      title: "Blütenregen",
-      subject: "Cherry blossom petals falling like snow in a Japanese park during spring",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Augenhöhe", lighting: "Natürliches Licht", mood: "Ätherisch", tags: ["frühling", "japan", "blüten"]
-    },
-    {
-      title: "Uralter Tempel",
-      subject: "The ruins of an ancient jungle temple overgrown with massive tree roots",
-      mediaType: "Bild", cameraType: "Großformat", filmStock: "Fujifilm Superia", perspective: "Weitwinkel", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["tempel", "ruinen", "dschungel"]
-    },
-    {
-      title: "Neon Tiger",
-      subject: "A tiger walking through a glowing forest where every plant is bioluminescent",
-      mediaType: "Bild", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Halbtotale", lighting: "Neon-Licht", mood: "Traumhaft", tags: ["tiger", "neon", "fantasy"]
-    },
-    {
-      title: "90er Skater Video",
-      subject: "Grainy footage of a teenager doing a kickflip over a gap in a parking lot",
-      mediaType: "Video", cameraType: "Retro", filmStock: "Super 8", perspective: "Froschperspektive", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["skate", "90s", "super8"]
-    },
-    {
-      title: "Himalaya Gipfel",
-      subject: "Climbers reaching the snowy summit of Mount Everest under a deep blue sky",
-      mediaType: "Bild", cameraType: "GoPro", filmStock: "Standard Digital", perspective: "Weitwinkel", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["berge", "klettern", "himalaya"]
-    },
-    {
-      title: "Futuristische Autobahn",
-      subject: "A multi-level highway with glowing lanes and autonomous pods moving at speed",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["verkehr", "stadt", "zukunft"]
-    },
-    {
-      title: "Katzenporträt Makro",
-      subject: "Extremely detailed shot of a cat's eye, showing the iris texture and reflections",
-      mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Standard Digital", perspective: "Extreme Nahaufnahme", lighting: "Natürliches Licht", mood: "Professionell", tags: ["katze", "auge", "makro"]
-    },
-    {
-      title: "Verlassene Irrenanstalt",
-      subject: "A long decaying corridor of an old asylum with peeling paint and metal beds",
-      mediaType: "Bild", cameraType: "Analog", filmStock: "Schwarz-Weiß", perspective: "Totale", lighting: "Düster", mood: "Dunkel", tags: ["horror", "verlassen", "asylum"]
-    },
-    {
-      title: "Cyberpunk Labor",
-      subject: "A scientist working on a glowing bio-mechanical prosthetic arm in a lab",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Nahaufnahme", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["labor", "technik", "cyberpunk"]
-    },
-    {
-      title: "Vintage Autowerkstatt",
-      subject: "A mechanic working on a shiny red Mustang in a workshop with neon signs",
-      mediaType: "Bild", cameraType: "Retro", filmStock: "Kodak Portra 400", perspective: "Halbtotale", lighting: "Studio-Beleuchtung", mood: "Nostalgisch", tags: ["auto", "werkstatt", "mustang"]
-    },
-    {
-      title: "Mondfinsternis",
-      subject: "The red blood moon hanging over a silhouette of a pine forest",
-      mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Ektachrome", perspective: "Totale", lighting: "Düster", mood: "Ätherisch", tags: ["mond", "nacht", "weltraum"]
-    },
-    {
-      title: "Bauernmarkt",
-      subject: "Fresh organic vegetables in wooden crates at an open-air farmers market",
-      mediaType: "Bild", cameraType: "iPhone", filmStock: "Kodak Gold 200", perspective: "Draufsicht", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["essen", "markt", "bio"]
-    },
-    {
-      title: "Holografisches Konzert",
-      subject: "A massive outdoor stadium with a 100ft tall holographic singer performing",
-      mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Neon-Licht", mood: "Lebhaft", tags: ["konzert", "hologramm", "musik"]
-    }
+    { title: "Cyberpunk Regen", subject: "A cyborg character walking through a rain-slicked Tokyo alley, neon signs reflecting in puddles", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Halbtotale", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["cyberpunk", "regen", "nacht"] },
+    { title: "Berghütte im Nebel", subject: "A lonely wooden cabin on a steep mountain ridge surrounded by thick morning mist", mediaType: "Bild", cameraType: "Mittelformat", filmStock: "Fujifilm Superia", perspective: "Weitwinkel", lighting: "Bewölkt", mood: "Raw/Authentisch", tags: ["natur", "berge", "nebel"] },
+    { title: "80er Jahre Skatepark", subject: "Teens hanging out at a sunny California skatepark in 1985, wearing vintage fashion", mediaType: "Bild", cameraType: "Analog", filmStock: "Kodak Gold 200", perspective: "Schräger Winkel", lighting: "Goldene Stunde", mood: "Nostalgisch", tags: ["80s", "retro", "skate"] },
+    { title: "Tiefsee Qualle", subject: "A bioluminescent jellyfish floating in the absolute darkness of the deep ocean", mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Standard Digital", perspective: "Makro", lighting: "Neon-Licht", mood: "Ätherisch", tags: ["ozean", "qualle", "biolumineszenz"] },
+    { title: "Wüstenkarawane", subject: "A long caravan of camels crossing the Sahara dunes during a sandstorm", mediaType: "Video", cameraType: "Großformat", filmStock: "Technicolor", perspective: "Vogelperspektive", lighting: "Hartes Licht", mood: "Professionell", tags: ["wüste", "kamele", "episch"] },
+    { title: "Retro Autokino", subject: "Classic cars parked at a drive-in theater, a black and white movie playing on the large screen", mediaType: "Bild", cameraType: "35mm Film", filmStock: "Kodak Portra 400", perspective: "Totale", lighting: "Düster", mood: "Nostalgisch", tags: ["kino", "autos", "nacht"] },
+    { title: "Zukunftstadt", subject: "Sleek white skyscrapers with floating gardens and flying vehicles in a utopian city", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Natürliches Licht", mood: "Futuristisch", tags: ["sci-fi", "utopie", "stadt"] },
+    { title: "Waldgeist", subject: "A mystical creature made of moss and tree bark blending into an ancient forest", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "CineStill 800T", perspective: "Nahaufnahme", lighting: "Weiches Licht", mood: "Traumhaft", tags: ["fantasy", "wald", "magie"] },
+    { title: "Streetfood Markt", subject: "Busy night market in Bangkok, steam rising from woks, intense colors and motion", mediaType: "Video", cameraType: "GoPro", filmStock: "Standard Digital", perspective: "Ego-Perspektive", lighting: "Neon-Licht", mood: "Lebhaft", tags: ["food", "reise", "pov"] },
+    { title: "Polar-Expedition", subject: "An icebreaker ship crushing through thick arctic ice under the northern lights", mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Ektachrome", perspective: "Weitwinkel", lighting: "Düster", mood: "Raw/Authentisch", tags: ["arktis", "aurora", "schiff"] },
+    { title: "Alter Jazzclub", subject: "A saxophone player performing on a dimly lit stage with cigarette smoke curling in the air", mediaType: "Bild", cameraType: "Vintage", filmStock: "Schwarz-Weiß", perspective: "Nahaufnahme", lighting: "Düster", mood: "Nostalgisch", tags: ["jazz", "musik", "club"] },
+    { title: "Weltraum-Station", subject: "Interior of a high-tech space station corridor with curved walls and white lighting", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Studio-Beleuchtung", mood: "Futuristisch", tags: ["weltraum", "innenraum", "minimalismus"] },
+    { title: "Sommerwiese Makro", subject: "A honeybee covered in pollen landing on a vibrant lavender flower", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Kodak Gold 200", perspective: "Extreme Nahaufnahme", lighting: "Natürliches Licht", mood: "Lebhaft", tags: ["makro", "natur", "biene"] },
+    { title: "Surfer Welle", subject: "A surfer inside a massive turquoise tube wave at Pipeline", mediaType: "Video", cameraType: "GoPro", filmStock: "Standard Digital", perspective: "Ego-Perspektive", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["surfen", "meer", "action"] },
+    { title: "Dampfzug in Alpen", subject: "A vintage steam locomotive crossing a high stone bridge in the Swiss Alps", mediaType: "Bild", cameraType: "35mm Film", filmStock: "Kodak Portra 400", perspective: "Weitwinkel", lighting: "Bewölkt", mood: "Nostalgisch", tags: ["zug", "berge", "vintage"] },
+    { title: "Geisterstadt Salon", subject: "The interior of an abandoned wild west salon with dust motes dancing in sunbeams", mediaType: "Bild", cameraType: "Großformat", filmStock: "Polaroid", perspective: "Halbtotale", lighting: "Natürliches Licht", mood: "Dunkel", tags: ["wildwest", "verlassen", "staub"] },
+    { title: "Neon Racing", subject: "High-speed night race of supercars on a highway with light trails and motion blur", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Froschperspektive", lighting: "Neon-Licht", mood: "Lebhaft", tags: ["rennen", "autos", "nacht"] },
+    { title: "Zugefrorener See", subject: "Intricate patterns of bubbles trapped under the clear blue ice of Lake Baikal", mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Ilford HP5", perspective: "Draufsicht", lighting: "Hartes Licht", mood: "Professionell", tags: ["eis", "winter", "abstrakt"] },
+    { title: "Mars Kolonie", subject: "The first human base on Mars with red dust storms and giant glass domes", mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Düster", mood: "Futuristisch", tags: ["mars", "planeten", "raumfahrt"] },
+    { title: "90er Rave", subject: "Flash photography of a crowded warehouse rave in 1994, lasers and baggy clothes", mediaType: "Bild", cameraType: "Analog", filmStock: "CineStill 800T", perspective: "Augenhöhe", lighting: "Neon-Licht", mood: "Nostalgisch", tags: ["90s", "party", "rave"] },
+    { title: "Insel Paradies", subject: "An aerial view of a private tropical island with white sand and coral reefs", mediaType: "Bild", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Natürliches Licht", mood: "Traumhaft", tags: ["strand", "insel", "urlaub"] },
+    { title: "Regenwald Wasserfall", subject: "A hidden waterfall deep in the Amazon, exotic birds flying through the spray", mediaType: "Video", cameraType: "Digital", filmStock: "Fujifilm Superia", perspective: "Weitwinkel", lighting: "Weiches Licht", mood: "Lebhaft", tags: ["dschungel", "wasserfall", "vögel"] },
+    { title: "U-Bahn Station Noir", subject: "A man in a trench coat waiting on a subway platform, shadows and flickering lights", mediaType: "Bild", cameraType: "35mm Film", filmStock: "Schwarz-Weiß", perspective: "Symmetrisch", lighting: "Düster", mood: "Dunkel", tags: ["noir", "stadt", "u-bahn"] },
+    { title: "Bonsai Garten", subject: "A serene Japanese zen garden with a perfectly trimmed ancient bonsai tree", mediaType: "Bild", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Augenhöhe", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["japan", "zen", "bonsai"] },
+    { title: "Heißluftballons", subject: "Hundreds of colorful hot air balloons rising over the fairy chimneys of Cappadocia", mediaType: "Video", cameraType: "Digital", filmStock: "Ektachrome", perspective: "Vogelperspektive", lighting: "Goldene Stunde", mood: "Ätherisch", tags: ["reisen", "ballon", "türkei"] },
+    { title: "Vulkan Ausbruch", subject: "Slow motion lava flow from an erupting volcano at night, red glow and ash clouds", mediaType: "Video", cameraType: "Großformat", filmStock: "Standard Digital", perspective: "Totale", lighting: "Düster", mood: "Raw/Authentisch", tags: ["natur", "vulkan", "lava"] },
+    { title: "Bibliothek der Magie", subject: "Infinite library with floating books and glowing crystals on the tables", mediaType: "Bild", cameraType: "Retro", filmStock: "CineStill 800T", perspective: "Totale", lighting: "Cinematisch", mood: "Traumhaft", tags: ["magie", "bücher", "fantasy"] },
+    { title: "Alpiner Sonnenaufgang", subject: "The first light hitting the peaks of the Dolomites, reflection in a still lake", mediaType: "Bild", cameraType: "Mittelformat", filmStock: "Kodak Portra 400", perspective: "Weitwinkel", lighting: "Goldene Stunde", mood: "Professionell", tags: ["berge", "see", "morgen"] },
+    { title: "Fashion Runway", subject: "High fashion model walking on a mirrored runway with intense flash photography", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Froschperspektive", lighting: "Studio-Beleuchtung", mood: "Professionell", tags: ["mode", "model", "runway"] },
+    { title: "Gletscher Höhle", subject: "Standing inside a deep blue ice cave under a glacier, light filtering through ice", mediaType: "Bild", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Nahaufnahme", lighting: "Weiches Licht", mood: "Ätherisch", tags: ["eis", "höhle", "blau"] },
+    { title: "Altstadt Gasse", subject: "A narrow cobblestone street in an Italian village at twilight, warm lamps turning on", mediaType: "Bild", cameraType: "Vintage", filmStock: "Kodak Gold 200", perspective: "Halbtotale", lighting: "Goldene Stunde", mood: "Nostalgisch", tags: ["italien", "dorf", "abend"] },
+    { title: "Futuristische Küche", subject: "A minimalist kitchen with holographic touchscreens and robotic arms cooking", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Studio-Beleuchtung", mood: "Futuristisch", tags: ["küche", "roboter", "zukunft"] },
+    { title: "Steampunk Stadt", subject: "A Victorian city with brass machinery, steam pipes and giant flying zeppelins", mediaType: "Bild", cameraType: "Analog", filmStock: "Technicolor", perspective: "Vogelperspektive", lighting: "Hartes Licht", mood: "Nostalgisch", tags: ["steampunk", "zeppelins", "victorian"] },
+    { title: "Eulen Augen", subject: "Extreme close up of an owl's eyes dilating in the dark forest", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "CineStill 800T", perspective: "Extreme Nahaufnahme", lighting: "Düster", mood: "Raw/Authentisch", tags: ["eule", "tier", "nacht"] },
+    { title: "Strand Lagerfeuer", subject: "Friends sitting around a crackling bonfire on the beach at night, stars visible above", mediaType: "Video", cameraType: "Digital", filmStock: "Kodak Portra 400", perspective: "Halbtotale", lighting: "Düster", mood: "Traumhaft", tags: ["feuer", "strand", "freunde"] },
+    { title: "Abstrakte Architektur", subject: "The spiral staircase of a modern museum, shot from below to create geometric patterns", mediaType: "Bild", cameraType: "Mittelformat", filmStock: "Standard Digital", perspective: "Froschperspektive", lighting: "Weiches Licht", mood: "Professionell", tags: ["architektur", "abstrakt", "geometrie"] },
+    { title: "Regnerisches London", subject: "Red double-decker bus crossing a bridge in London during a typical grey rain", mediaType: "Video", cameraType: "Vintage", filmStock: "VHS-Stil", perspective: "Totale", lighting: "Bewölkt", mood: "Nostalgisch", tags: ["london", "regen", "vhs"] },
+    { title: "Blütenregen", subject: "Cherry blossom petals falling like snow in a Japanese park during spring", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Augenhöhe", lighting: "Natürliches Licht", mood: "Ätherisch", tags: ["frühling", "japan", "blüten"] },
+    { title: "Uralter Tempel", subject: "The ruins of an ancient jungle temple overgrown with massive tree roots", mediaType: "Bild", cameraType: "Großformat", filmStock: "Fujifilm Superia", perspective: "Weitwinkel", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["tempel", "ruinen", "dschungel"] },
+    { title: "Neon Tiger", subject: "A tiger walking through a glowing forest where every plant is bioluminescent", mediaType: "Bild", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Halbtotale", lighting: "Neon-Licht", mood: "Traumhaft", tags: ["tiger", "neon", "fantasy"] },
+    { title: "90er Skater Video", subject: "Grainy footage of a teenager doing a kickflip over a gap in a parking lot", mediaType: "Video", cameraType: "Retro", filmStock: "Super 8", perspective: "Froschperspektive", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["skate", "90s", "super8"] },
+    { title: "Himalaya Gipfel", subject: "Climbers reaching the snowy summit of Mount Everest under a deep blue sky", mediaType: "Bild", cameraType: "GoPro", filmStock: "Standard Digital", perspective: "Weitwinkel", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["berge", "klettern", "himalaya"] },
+    { title: "Futuristische Autobahn", subject: "A multi-level highway with glowing lanes and autonomous pods moving at speed", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["verkehr", "stadt", "zukunft"] },
+    { title: "Katzenporträt Makro", subject: "Extremely detailed shot of a cat's eye, showing the iris texture and reflections", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Standard Digital", perspective: "Extreme Nahaufnahme", lighting: "Natürliches Licht", mood: "Professionell", tags: ["katze", "auge", "makro"] },
+    { title: "Verlassene Irrenanstalt", subject: "A long decaying corridor of an old asylum with peeling paint and metal beds", mediaType: "Bild", cameraType: "Analog", filmStock: "Schwarz-Weiß", perspective: "Totale", lighting: "Düster", mood: "Dunkel", tags: ["horror", "verlassen", "asylum"] },
+    { title: "Cyberpunk Labor", subject: "A scientist working on a glowing bio-mechanical prosthetic arm in a lab", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Nahaufnahme", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["labor", "technik", "cyberpunk"] },
+    { title: "Vintage Autowerkstatt", subject: "A mechanic working on a shiny red Mustang in a workshop with neon signs", mediaType: "Bild", cameraType: "Retro", filmStock: "Kodak Portra 400", perspective: "Halbtotale", lighting: "Studio-Beleuchtung", mood: "Nostalgisch", tags: ["auto", "werkstatt", "mustang"] },
+    { title: "Mondfinsternis", subject: "The red blood moon hanging over a silhouette of a pine forest", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Ektachrome", perspective: "Totale", lighting: "Düster", mood: "Ätherisch", tags: ["mond", "nacht", "weltraum"] },
+    { title: "Bauernmarkt", subject: "Fresh organic vegetables in wooden crates at an open-air farmers market", mediaType: "Bild", cameraType: "iPhone", filmStock: "Kodak Gold 200", perspective: "Draufsicht", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["essen", "markt", "bio"] },
+    { title: "Holografisches Konzert", subject: "A massive outdoor stadium with a 100ft tall holographic singer performing", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Neon-Licht", mood: "Lebhaft", tags: ["konzert", "hologramm", "musik"] },
+    
+    // Additional 50 Prompts
+    { title: "Antike Schmiede", subject: "A blacksmith hammering glowing red steel in a dark medieval workshop", mediaType: "Bild", cameraType: "Analog", filmStock: "Ilford HP5", perspective: "Nahaufnahme", lighting: "Düster", mood: "Raw/Authentisch", tags: ["geschichte", "handwerk", "feuer"] },
+    { title: "Cyberpunk Regenwald", subject: "Ancient trees with bioluminescent vines and holographic birds in a digital jungle", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Weitwinkel", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["sci-fi", "natur", "neon"] },
+    { title: "Schwebende Inseln", subject: "Floating rock islands with waterfalls pouring into the clouds above a green valley", mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Ektachrome", perspective: "Vogelperspektive", lighting: "Goldene Stunde", mood: "Ätherisch", tags: ["fantasy", "landschaft", "wolken"] },
+    { title: "Klassisches Ballett", subject: "A ballerina performing a perfect pirouette on a wooden stage with dust in sunbeams", mediaType: "Video", cameraType: "Großformat", filmStock: "Kodak Portra 400", perspective: "Halbtotale", lighting: "Weiches Licht", mood: "Professionell", tags: ["tanz", "kunst", "ballett"] },
+    { title: "Unterwasser Stadt", subject: "Giant glass domes protecting a futuristic city on the ocean floor, sharks swimming past", mediaType: "Bild", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Düster", mood: "Futuristisch", tags: ["ozean", "zukunft", "architektur"] },
+    { title: "Wikinger Schiff", subject: "A Viking longship sailing through a misty fjord at dawn, shields along the side", mediaType: "Bild", cameraType: "Analog", filmStock: "Schwarz-Weiß", perspective: "Low Angle", lighting: "Bewölkt", mood: "Raw/Authentisch", tags: ["geschichte", "wikinger", "meer"] },
+    { title: "Zen Stein Garten", subject: "Perfectly raked sand around a single weathered rock in a quiet Kyoto temple", mediaType: "Bild", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Draufsicht", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["japan", "zen", "minimalismus"] },
+    { title: "Drachenhöhle", subject: "A massive sleeping dragon coiled around a pile of gold coins in a dark cavern", mediaType: "Bild", cameraType: "Retro", filmStock: "CineStill 800T", perspective: "Totale", lighting: "Düster", mood: "Dunkel", tags: ["fantasy", "drache", "gold"] },
+    { title: "Eiscreme Makro", subject: "Extreme close up of a melting scoop of vanilla ice cream with rainbow sprinkles", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Kodak Gold 200", perspective: "Makro", lighting: "Studio-Beleuchtung", mood: "Lebhaft", tags: ["essen", "süß", "makro"] },
+    { title: "Steampunk Uhrwerk", subject: "The interior of a giant clock with brass gears, spinning pistons and escaping steam", mediaType: "Video", cameraType: "Vintage", filmStock: "Technicolor", perspective: "Extreme Nahaufnahme", lighting: "Hartes Licht", mood: "Nostalgisch", tags: ["steampunk", "technik", "messing"] },
+    { title: "Alchemist Labor", subject: "Bubbling potions in glass beakers, old scrolls and a raven on a wooden shelf", mediaType: "Bild", cameraType: "Analog", filmStock: "Polaroid", perspective: "Nahaufnahme", lighting: "Düster", mood: "Traumhaft", tags: ["magie", "chemie", "mittelalter"] },
+    { title: "Schachmatt", subject: "A hand moving a wooden queen piece to end a chess game, shallow depth of field", mediaType: "Bild", cameraType: "Mittelformat", filmStock: "Fujifilm Superia", perspective: "Nahaufnahme", lighting: "Weiches Licht", mood: "Professionell", tags: ["spiel", "schach", "fokus"] },
+    { title: "Gewitter über Stadt", subject: "Slow motion lightning striking a skyscraper during a heavy thunderstorm at night", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Düster", mood: "Dunkel", tags: ["wetter", "blitz", "stadt"] },
+    { title: "Venedig Kanal", subject: "A gondola moving slowly through a narrow canal in Venice during twilight", mediaType: "Bild", cameraType: "35mm Film", filmStock: "Kodak Portra 400", perspective: "Augenhöhe", lighting: "Goldene Stunde", mood: "Nostalgisch", tags: ["italien", "reise", "venedig"] },
+    { title: "Astronaut im Wald", subject: "An astronaut in a full space suit walking through a lush green pine forest", mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Standard Digital", perspective: "Halbtotale", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["surreal", "weltraum", "natur"] },
+    { title: "Samurai Duell", subject: "Two samurai standing face to face in a field of red spider lilies during a sunset", mediaType: "Video", cameraType: "Großformat", filmStock: "Schwarz-Weiß", perspective: "Totale", lighting: "Cinematisch", mood: "Raw/Authentisch", tags: ["japan", "samurai", "kampf"] },
+    { title: "Korallenriff", subject: "Thousands of tiny colorful fish swimming through a healthy coral reef in sunlight", mediaType: "Video", cameraType: "GoPro", filmStock: "Standard Digital", perspective: "Augenhöhe", lighting: "Natürliches Licht", mood: "Lebhaft", tags: ["ozean", "fische", "natur"] },
+    { title: "Zukunft-Bibliothek", subject: "Floating digital screens serving as books in a white minimalist library hall", mediaType: "Bild", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Vogelperspektive", lighting: "Studio-Beleuchtung", mood: "Futuristisch", tags: ["wissen", "zukunft", "minimalismus"] },
+    { title: "Oldtimer Grand Prix", subject: "Classic race cars from the 1960s speeding around a sharp corner, tire smoke", mediaType: "Video", cameraType: "Retro", filmStock: "Super 8", perspective: "Froschperspektive", lighting: "Hartes Licht", mood: "Nostalgisch", tags: ["autos", "rennen", "retro"] },
+    { title: "Pfauenfeder Makro", subject: "Extreme close up of a peacock feather, showing the iridescent patterns and texture", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Standard Digital", perspective: "Extreme Nahaufnahme", lighting: "Studio-Beleuchtung", mood: "Lebhaft", tags: ["natur", "farben", "makro"] },
+    { title: "Einsamer Leuchtturm", subject: "A lighthouse standing against massive waves during a heavy storm, cold colors", mediaType: "Bild", cameraType: "35mm Film", filmStock: "Schwarz-Weiß", perspective: "Weitwinkel", lighting: "Bewölkt", mood: "Dunkel", tags: ["meer", "sturm", "leuchtturm"] },
+    { title: "Kathedrale Licht", subject: "Sunlight streaming through stained glass windows into a dusty cathedral nave", mediaType: "Bild", cameraType: "Großformat", filmStock: "Kodak Portra 400", perspective: "Halbtotale", lighting: "Cinematisch", mood: "Ätherisch", tags: ["kirche", "licht", "architektur"] },
+    { title: "Cyber-Garten", subject: "Robotic bees pollinating mechanical flowers made of glass and glowing fiber optics", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Makro", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["sci-fi", "roboter", "natur"] },
+    { title: "Orient Express", subject: "Luxurious interior of a train cabin with velvet seats and mahogany wood at night", mediaType: "Bild", cameraType: "Vintage", filmStock: "Kodak Gold 200", perspective: "Nahaufnahme", lighting: "Düster", mood: "Nostalgisch", tags: ["zug", "luxus", "reise"] },
+    { title: "Wolf im Mondschein", subject: "A lone wolf howling on a cliff with a giant full moon in the background", mediaType: "Bild", cameraType: "Analog", filmStock: "CineStill 800T", perspective: "Low Angle", lighting: "Düster", mood: "Raw/Authentisch", tags: ["tier", "wolf", "mond"] },
+    { title: "Flipperspiel", subject: "POV shot of playing an old pinball machine, flashing lights and chrome balls", mediaType: "Video", cameraType: "GoPro", filmStock: "VHS-Stil", perspective: "Ego-Perspektive", lighting: "Neon-Licht", mood: "Nostalgisch", tags: ["retro", "spiel", "arcade"] },
+    { title: "Luftschiff Hafen", subject: "A giant steam-powered airship docking at a tower in a Victorian London style city", mediaType: "Bild", cameraType: "Großformat", filmStock: "Technicolor", perspective: "Vogelperspektive", lighting: "Bewölkt", mood: "Nostalgisch", tags: ["steampunk", "zeppelins", "stadt"] },
+    { title: "Wassertropfen", subject: "High speed photography of a water drop hitting a still surface, perfect crown splash", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Standard Digital", perspective: "Makro", lighting: "Studio-Beleuchtung", mood: "Professionell", tags: ["wasser", "geschwindigkeit", "makro"] },
+    { title: "Lavendelfeld", subject: "Infinite purple lavender fields in Provence during the sunset, soft focus", mediaType: "Bild", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Weitwinkel", lighting: "Goldene Stunde", mood: "Traumhaft", tags: ["frankreich", "natur", "blumen"] },
+    { title: "Glatteis Fahrt", subject: "POV of driving a car through a snow-covered mountain pass at night", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Ego-Perspektive", lighting: "Düster", mood: "Raw/Authentisch", tags: ["auto", "winter", "berge"] },
+    { title: "Magische Schmiede", subject: "An elf forging a glowing sword with blue sparks in a crystal cave", mediaType: "Bild", cameraType: "Retro", filmStock: "CineStill 800T", perspective: "Nahaufnahme", lighting: "Neon-Licht", mood: "Fantasy", tags: ["fantasy", "elf", "schwert"] },
+    { title: "Teezeremonie", subject: "A hand pouring green tea into a traditional ceramic cup, steam rising", mediaType: "Video", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Nahaufnahme", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["japan", "tee", "kultur"] },
+    { title: "Kirmes bei Nacht", subject: "A long exposure of a spinning Ferris wheel with colorful light trails", mediaType: "Bild", cameraType: "Digital", filmStock: "Ektachrome", perspective: "Totale", lighting: "Neon-Licht", mood: "Lebhaft", tags: ["kirmes", "licht", "nacht"] },
+    { title: "Wüstenblume", subject: "A single vibrant flower growing out of the dry, cracked desert floor", mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Fujifilm Superia", perspective: "Froschperspektive", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["wüste", "blume", "leben"] },
+    { title: "Antarktis Forschungsstation", subject: "A small red base building in a vast white snowy desert under a clear sky", mediaType: "Bild", cameraType: "Großformat", filmStock: "Schwarz-Weiß", perspective: "Weitwinkel", lighting: "Hartes Licht", mood: "Professionell", tags: ["arktis", "wissenschaft", "kälte"] },
+    { title: "90er Boyband", subject: "Group of five young men in baggy denim and bleached hair posing for a magazine cover", mediaType: "Bild", cameraType: "Analog", filmStock: "Kodak Gold 200", perspective: "Halbtotale", lighting: "Studio-Beleuchtung", mood: "Nostalgisch", tags: ["90s", "musik", "mode"] },
+    { title: "Kolibri Flug", subject: "High speed footage of a hummingbird hovering in front of a red flower", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Nahaufnahme", lighting: "Natürliches Licht", mood: "Professionell", tags: ["vogel", "natur", "zeitlupe"] },
+    { title: "Hacker-Keller", subject: "Multiple computer monitors with scrolling green code in a dark, messy room", mediaType: "Bild", cameraType: "Digital", filmStock: "CineStill 800T", perspective: "Halbtotale", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["code", "hacker", "technik"] },
+    { title: "Gladiatoren Kampf", subject: "Two gladiators fighting in the Colosseum with sand flying and a cheering crowd", mediaType: "Video", cameraType: "Großformat", filmStock: "Technicolor", perspective: "Totale", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["rom", "geschichte", "kampf"] },
+    { title: "Pilzwald bei Nacht", subject: "Glowing mushrooms on the forest floor, casting light on the surrounding trees", mediaType: "Bild", cameraType: "Spiegellos", filmStock: "Standard Digital", perspective: "Nahaufnahme", lighting: "Neon-Licht", mood: "Traumhaft", tags: ["wald", "pilze", "fantasy"] },
+    { title: "Elegante Teeparty", subject: "Victorian ladies in heavy dresses having tea in a rose garden during summer", mediaType: "Bild", cameraType: "Analog", filmStock: "Kodak Portra 400", perspective: "Halbtotale", lighting: "Weiches Licht", mood: "Professionell", tags: ["geschichte", "garten", "mode"] },
+    { title: "Space-X Start", subject: "A rocket engine igniting on the launchpad with massive clouds of smoke and fire", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Low Angle", lighting: "Düster", mood: "Professionell", tags: ["weltraum", "rakete", "technik"] },
+    { title: "Herbstlicher Park", subject: "Golden maple leaves covering a park bench and a path during a sunny day", mediaType: "Bild", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Halbtotale", lighting: "Goldene Stunde", mood: "Traumhaft", tags: ["herbst", "natur", "park"] },
+    { title: "Dschungel Fluss", subject: "A small boat moving through a narrow jungle river with thick foliage overhanging", mediaType: "Video", cameraType: "GoPro", filmStock: "Standard Digital", perspective: "Ego-Perspektive", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["dschungel", "fluss", "abenteuer"] },
+    { title: "Polarlicht Hütte", subject: "A small wooden cabin under the green curtains of the Aurora Borealis", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Ektachrome", perspective: "Weitwinkel", lighting: "Düster", mood: "Ätherisch", tags: ["aurora", "winter", "hütte"] },
+    { title: "Zukunft-U-Bahn", subject: "A magnetic levitation train arriving at a glass station with holographic ads", mediaType: "Video", cameraType: "Digital", filmStock: "Standard Digital", perspective: "Totale", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["transport", "stadt", "zukunft"] },
+    { title: "Antiker Markt", subject: "Busy market in ancient Rome with merchants selling spices, cloth and wine", mediaType: "Bild", cameraType: "35mm Film", filmStock: "Fujifilm Superia", perspective: "Vogelperspektive", lighting: "Hartes Licht", mood: "Raw/Authentisch", tags: ["rom", "geschichte", "markt"] },
+    { title: "Cyberpunk Regenmantel", subject: "Person in a transparent neon-lit raincoat walking through a rainy neon city", mediaType: "Bild", cameraType: "Digital", filmStock: "CineStill 800T", perspective: "Nahaufnahme", lighting: "Neon-Licht", mood: "Futuristisch", tags: ["mode", "cyberpunk", "regen"] },
+    { title: "Schneeeule im Flug", subject: "A snowy owl flying directly towards the camera in a white winter landscape", mediaType: "Bild", cameraType: "Spiegelreflex", filmStock: "Schwarz-Weiß", perspective: "Augenhöhe", lighting: "Bewölkt", mood: "Raw/Authentisch", tags: ["tier", "winter", "vogel"] },
+    { title: "Kaffee-Rösterei", subject: "Close up of coffee beans being roasted in a large rotating metal drum", mediaType: "Video", cameraType: "iPhone", filmStock: "Standard Digital", perspective: "Nahaufnahme", lighting: "Natürliches Licht", mood: "Raw/Authentisch", tags: ["kaffee", "handwerk", "rösten"] }
   ];
 
   const mapToEnglish = {
@@ -303,8 +155,8 @@ const generateMockPrompts = (): Prompt[] => {
     const engCamera = mapToEnglish.camera[p.cameraType as keyof typeof mapToEnglish.camera];
     const engFilm = mapToEnglish.film[p.filmStock as keyof typeof mapToEnglish.film];
     const engPersp = mapToEnglish.perspective[p.perspective as keyof typeof mapToEnglish.perspective];
-    const engLight = mapToEnglish.lighting[p.lighting as keyof typeof mapToEnglish.lighting];
-    const engMood = mapToEnglish.mood[p.mood as keyof typeof mapToEnglish.mood];
+    const engLight = (p as any).lighting ? mapToEnglish.lighting[(p as any).lighting as keyof typeof mapToEnglish.lighting] : "";
+    const engMood = (p as any).mood ? mapToEnglish.mood[(p as any).mood as keyof typeof mapToEnglish.mood] : "";
 
     const content = `${engMedia} ${p.subject}. The scene is ${engPersp}, captured using a ${engCamera}. The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed.`;
 
@@ -316,8 +168,8 @@ const generateMockPrompts = (): Prompt[] => {
       cameraType: p.cameraType as any,
       filmStock: p.filmStock as any,
       perspective: p.perspective as any,
-      lighting: p.lighting as any,
-      mood: p.mood as any,
+      lighting: (p as any).lighting || "",
+      mood: (p as any).mood || "",
       tags: p.tags,
       createdAt: new Date().toISOString(),
     };
