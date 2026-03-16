@@ -22,6 +22,7 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
     cameraType: "Digital" as CameraType,
     filmStock: "Standard Digital" as FilmStock,
     perspective: "Augenhöhe" as Perspective,
+    aspectRatio: "16:9",
     tags: "",
   });
 
@@ -44,7 +45,9 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
       cameraType: formData.cameraType,
       filmStock: formData.filmStock,
       perspective: formData.perspective,
+      aspectRatio: formData.aspectRatio,
       tags: formData.tags.split(",").map(t => t.trim()).filter(t => t !== ""),
+
       createdAt: new Date().toISOString(),
     };
 
@@ -57,8 +60,10 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
       cameraType: "Digital",
       filmStock: "Standard Digital",
       perspective: "Augenhöhe",
+      aspectRatio: "16:9",
       tags: "",
     });
+
     toast({
       title: "Erfolg!",
       description: "Prompt wurde zur Datenbank hinzugefügt.",
@@ -68,6 +73,7 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
   const cameraTypes: CameraType[] = ["Retro", "Analog", "Digital", "Spiegellos", "Spiegelreflex", "Vintage", "35mm Film", "Mittelformat", "Großformat", "GoPro", "iPhone"];
   const filmStocks: FilmStock[] = ["Kodak Portra 400", "Fujifilm Superia", "Schwarz-Weiß", "CineStill 800T", "Polaroid", "Technicolor", "Ektachrome", "Standard Digital", "VHS-Stil", "Super 8", "Kodak Gold 200", "Ilford HP5"];
   const perspectives: Perspective[] = ["Weitwinkel", "Nahaufnahme", "Vogelperspektive", "Froschperspektive", "Draufsicht", "Augenhöhe", "Schräger Winkel", "Makro", "Extreme Nahaufnahme", "Totale", "Halbtotale", "Ego-Perspektive"];
+  const aspectRatios = ["1:1", "16:9", "9:16", "4:3", "3:2", "2:1", "21:9"];
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -152,6 +158,16 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
                 </Select>
               </div>
             </div>
+            <div className="grid gap-2">
+              <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Seitenverhältnis (Aspect Ratio)</Label>
+              <Select value={formData.aspectRatio} onValueChange={(v) => setFormData({...formData, aspectRatio: v})}>
+                <SelectTrigger className="h-12 rounded-xl border-2 border-primary/5"><SelectValue /></SelectTrigger>
+                <SelectContent className="rounded-xl">
+                  {aspectRatios.map(r => <SelectItem key={r} value={r}>{r}</SelectItem>)}
+                </SelectContent>
+              </Select>
+            </div>
+
           </div>
           <DialogFooter className="mt-8">
             <Button type="submit" className="w-full h-14 rounded-2xl text-lg font-black tracking-widest bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20">

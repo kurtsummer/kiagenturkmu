@@ -25,7 +25,8 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     aperture: "2.8",
     shutterSpeed: "1/500",
     iso: "200",
-    focalLength: "35mm"
+    focalLength: "35mm",
+    aspectRatio: "16:9"
   });
 
   const [generatedPrompt, setGeneratedPrompt] = useState("");
@@ -41,6 +42,7 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
   const shutters = ["1/8000", "1/4000", "1/2000", "1/1000", "1/500", "1/250", "1/125", "1/60", "1/30", "1/15", "1s"];
   const isos = ["100", "200", "400", "800", "1600", "3200", "6400", "12800"];
   const focalLengths = ["14mm", "24mm", "35mm", "50mm", "85mm", "100mm", "200mm", "400mm"];
+  const aspectRatios = ["1:1", "16:9", "9:16", "4:3", "3:2", "2:1", "21:9"];
 
   const mapToEnglish = {
     media: { "Bild": "High-resolution professional photograph of", "Video": "Cinematic high-quality video footage of" },
@@ -109,7 +111,8 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       aperture: randomItems(apertures),
       shutterSpeed: randomItems(shutters),
       iso: randomItems(isos),
-      focalLength: randomItems(focalLengths)
+      focalLength: randomItems(focalLengths),
+      aspectRatio: randomItems(aspectRatios)
     });
 
     toast({ title: "Überraschung!", description: "Zufällige Kombination generiert." });
@@ -164,8 +167,9 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
 
     const techInfo = `camera settings: f/${config.aperture}, focal length ${config.focalLength}, shutter speed ${config.shutterSpeed}, ISO ${config.iso}.`;
 
-    const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. ${techInfo} The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed.`;
+    const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. ${techInfo} The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed. --ar ${config.aspectRatio}`;
     setGeneratedPrompt(fullPrompt);
+
   };
 
   const handleCopy = () => {
@@ -191,6 +195,7 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       shutterSpeed: config.shutterSpeed,
       iso: config.iso,
       focalLength: config.focalLength,
+      aspectRatio: config.aspectRatio,
       tags: ["generiert", config.mediaType.toLowerCase()],
 
       createdAt: new Date().toISOString(),
@@ -252,7 +257,9 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
             { label: "Perspektive", value: config.perspective, key: "perspective", options: perspectives },
             { label: "Beleuchtung", value: config.lighting, key: "lighting", options: lightings },
             { label: "Stimmung", value: config.mood, key: "mood", options: moods },
+            { label: "Seitenverhältnis", value: config.aspectRatio, key: "aspectRatio", options: aspectRatios },
           ].map((field) => (
+
             <div key={field.key} className="space-y-2">
               <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">{field.label}</Label>
               <Select value={field.value as string} onValueChange={(v) => setConfig({ ...config, [field.key]: v })}>

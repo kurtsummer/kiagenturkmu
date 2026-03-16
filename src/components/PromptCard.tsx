@@ -91,8 +91,8 @@ export function PromptCard({ prompt, onToggleFavorite }: PromptCardProps) {
           </div>
         </div>
 
-        {(prompt.aperture || prompt.iso || prompt.shutterSpeed || prompt.focalLength) && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-dashed border-primary/10">
+        {(prompt.aperture || prompt.iso || prompt.shutterSpeed || prompt.focalLength || prompt.aspectRatio) && (
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-2 border-t border-dashed border-primary/10">
             {prompt.aperture && (
               <div className="text-[9px] font-bold text-center bg-zinc-50 dark:bg-zinc-800 p-1 rounded-lg">
                 <span className="text-muted-foreground mr-1">F/</span>{prompt.aperture}
@@ -111,6 +111,11 @@ export function PromptCard({ prompt, onToggleFavorite }: PromptCardProps) {
             {prompt.iso && (
               <div className="text-[9px] font-bold text-center bg-zinc-50 dark:bg-zinc-800 p-1 rounded-lg">
                 <span className="text-muted-foreground mr-1">ISO:</span>{prompt.iso}
+              </div>
+            )}
+            {prompt.aspectRatio && (
+              <div className="text-[9px] font-bold text-center bg-primary/10 text-primary p-1 rounded-lg">
+                AR {prompt.aspectRatio}
               </div>
             )}
           </div>

@@ -20,11 +20,12 @@ export interface Prompt {
   perspective: Perspective;
   lighting?: Lighting;
   mood?: Mood;
-  tags: string[];
-  createdAt: string;
   isFavorite?: boolean;
   aperture?: string;
   shutterSpeed?: string;
   iso?: string;
   focalLength?: string;
+  aspectRatio?: string;
+  tags: string[];
+  createdAt: string;
 }
