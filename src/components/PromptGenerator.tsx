@@ -29,7 +29,7 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     iso: "200",
     focalLength: "35mm",
     aspectRatio: "16:9",
-    negativePrompt: "blurry, low quality, distorted, watermark, signature, grainy, low resolution, ugly, out of focus"
+    negativePrompt: "unscharf, schlechte Qualität, verzerrt, Wasserzeichen, Unterschrift, körnig, niedrige Auflösung, hässlich, nicht im Fokus"
   });
 
   const [generatedPrompt, setGeneratedPrompt] = useState("");
@@ -91,6 +91,32 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     }
   };
 
+  const translateNegative = (text: string) => {
+    const mapping: Record<string, string> = {
+      "unscharf": "blurry",
+      "schlechte qualität": "low quality",
+      "verzerrt": "distorted",
+      "wasserzeichen": "watermark",
+      "unterschrift": "signature",
+      "körnig": "grainy",
+      "niedrige auflösung": "low resolution",
+      "hässlich": "ugly",
+      "nicht im fokus": "out of focus",
+      "text": "text",
+      "rahmen": "frame",
+      "logo": "logo",
+      "deformiert": "deformed",
+      "mutiert": "mutated",
+      "unrealistisch": "unrealistic"
+    };
+
+    let translated = text.toLowerCase();
+    Object.entries(mapping).forEach(([ger, eng]) => {
+      translated = translated.replace(new RegExp(ger, 'g'), eng);
+    });
+    return translated;
+  };
+
   const handleSurpriseMe = () => {
     const randomItems = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
     const randomSubjects = [
@@ -116,7 +142,7 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       iso: randomItems(isos),
       focalLength: randomItems(focalLengths),
       aspectRatio: randomItems(aspectRatios),
-      negativePrompt: "blurry, low quality, distorted, watermark"
+      negativePrompt: "unscharf, schlechte Qualität, verzerrt, Wasserzeichen"
     });
 
     toast({ title: "Überraschung!", description: "Zufällige Kombination generiert." });
@@ -157,7 +183,6 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
   };
 
   const generatePrompt = () => {
-
     if (!config.subject) {
       toast({ title: "Hinweis", description: "Bitte gib zuerst ein Thema ein.", variant: "destructive" });
       return;
@@ -170,10 +195,10 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     const engMood = mapToEnglish.mood[config.mood as keyof typeof mapToEnglish.mood];
 
     const techInfo = `camera settings: f/${config.aperture}, focal length ${config.focalLength}, shutter speed ${config.shutterSpeed}, ISO ${config.iso}.`;
+    const engNegative = translateNegative(config.negativePrompt);
 
-    const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. ${techInfo} The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed. --ar ${config.aspectRatio} --no ${config.negativePrompt}`;
+    const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. ${techInfo} The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed. --ar ${config.aspectRatio} --no ${engNegative}`;
     setGeneratedPrompt(fullPrompt);
-
   };
 
   const handleCopy = () => {
@@ -202,7 +227,6 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       aspectRatio: config.aspectRatio,
       negativePrompt: config.negativePrompt,
       tags: ["generiert", config.mediaType.toLowerCase()],
-
       createdAt: new Date().toISOString(),
     });
     toast({ title: "Gespeichert!", description: "In Datenbank abgelegt." });
@@ -246,7 +270,6 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
           </div>
           <Textarea
             id="subject"
-
             placeholder="Beschreibe deine Szene..."
             className="h-32 resize-none rounded-3xl border-2 border-primary/5 bg-white/50 dark:bg-black/20 focus:border-primary/30 focus:ring-primary/20 transition-all text-lg p-6"
             value={config.subject}
@@ -268,7 +291,6 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
           {[
             { label: "Medien-Typ", value: config.mediaType, key: "mediaType", options: ["Bild", "Video"] },
             { label: "Kamera", value: config.cameraType, key: "cameraType", options: cameraTypes },
@@ -278,7 +300,6 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
             { label: "Stimmung", value: config.mood, key: "mood", options: moods },
             { label: "Seitenverhältnis", value: config.aspectRatio, key: "aspectRatio", options: aspectRatios },
           ].map((field) => (
-
             <div key={field.key} className="space-y-2">
               <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">{field.label}</Label>
               <Select value={field.value as string} onValueChange={(v) => setConfig({ ...config, [field.key]: v })}>
