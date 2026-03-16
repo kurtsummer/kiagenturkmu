@@ -27,6 +27,7 @@ export interface Prompt {
   focalLength?: string;
   aspectRatio?: string;
   negativePrompt?: string;
+  imageUrl?: string;
   tags: string[];
 
   createdAt: string;

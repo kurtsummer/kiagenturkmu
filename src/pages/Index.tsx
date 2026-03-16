@@ -80,6 +80,10 @@ export default function Index() {
     setPrompts(prev => prev.map(p => p.id === updatedPrompt.id ? updatedPrompt : p));
   };
 
+  const handleImageUpload = (id: string, base64: string) => {
+    setPrompts(prev => prev.map(p => p.id === id ? { ...p, imageUrl: base64 } : p));
+  };
+
   const handleTagClick = (tag: string) => {
 
     setFilters(prev => ({ ...prev, search: tag }));
@@ -268,6 +272,7 @@ export default function Index() {
                     onTagClick={handleTagClick}
                     onEdit={setEditingPrompt}
                     onDelete={handleDeletePrompt}
+                    onImageUpload={handleImageUpload}
                   />
                 ))}
 

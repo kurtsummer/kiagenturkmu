@@ -6,7 +6,8 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Prompt, MediaType, CameraType, FilmStock, Perspective } from "../types/prompt";
-import { Database, Sparkles, Pencil } from "lucide-react";
+import { Database, Sparkles, Pencil, Trash2 } from "lucide-react";
+
 import { toast } from "../hooks/use-toast";
 
 interface EditPromptModalProps {
@@ -25,6 +26,7 @@ export function EditPromptModal({ prompt, onClose, onUpdate }: EditPromptModalPr
     perspective: Perspective;
     aspectRatio: string;
     negativePrompt: string;
+    imageUrl?: string;
     tags: string;
   } | null>(null);
 
@@ -39,8 +41,10 @@ export function EditPromptModal({ prompt, onClose, onUpdate }: EditPromptModalPr
         perspective: prompt.perspective,
         aspectRatio: prompt.aspectRatio || "16:9",
         negativePrompt: prompt.negativePrompt || "",
+        imageUrl: prompt.imageUrl,
         tags: prompt.tags.join(", "),
       });
+
     } else {
       setFormData(null);
     }
@@ -69,6 +73,7 @@ export function EditPromptModal({ prompt, onClose, onUpdate }: EditPromptModalPr
       perspective: formData.perspective,
       aspectRatio: formData.aspectRatio,
       negativePrompt: formData.negativePrompt,
+      imageUrl: formData.imageUrl,
       tags: formData.tags.split(",").map(t => t.trim()).filter(t => t !== ""),
     };
 
@@ -113,7 +118,20 @@ export function EditPromptModal({ prompt, onClose, onUpdate }: EditPromptModalPr
                 className="h-14 rounded-2xl border-2 border-primary/5 focus:border-primary/30 transition-all font-bold"
               />
             </div>
+            {formData.imageUrl && (
+              <div className="relative rounded-2xl overflow-hidden group">
+                <img src={formData.imageUrl} className="w-full h-32 object-cover" alt="Vorschau" />
+                <button
+                  type="button"
+                  onClick={() => setFormData({...formData, imageUrl: undefined})}
+                  className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+            )}
             <div className="grid gap-2">
+
               <Label htmlFor="edit-content" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Prompt-Inhalt</Label>
               <Textarea 
                 id="edit-content" 

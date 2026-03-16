@@ -18,10 +18,23 @@ interface PromptCardProps {
   onTagClick?: (tag: string) => void;
   onEdit?: (prompt: Prompt) => void;
   onDelete?: (id: string) => void;
+  onImageUpload?: (id: string, base64: string) => void;
 }
 
-export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDelete }: PromptCardProps) {
+export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDelete, onImageUpload }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        onImageUpload?.(prompt.id, reader.result as string);
+        toast({ title: "Bild hochgeladen", description: "Vorschau wurde aktualisiert." });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(prompt.content);
@@ -43,8 +56,22 @@ export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDel
 
   return (
     <Card className="group relative overflow-hidden border-none transition-all duration-500 hover:shadow-[0_20px_50px_rgba(16,185,129,0.2)] hover:-translate-y-2 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md rounded-[2rem]">
+      {/* Image Preview Section */}
+      {prompt.imageUrl && (
+        <div className="relative h-48 w-full overflow-hidden border-b border-primary/5">
+          <img
+            src={prompt.imageUrl}
+            alt={prompt.title}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+             <span className="text-white text-[10px] font-bold uppercase tracking-widest">KI Generation Vorschau</span>
+          </div>
+        </div>
+      )}
 
       {/* Decorative gradient background on hover */}
+
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       
       <CardHeader className="pb-2 relative">
@@ -75,11 +102,21 @@ export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDel
                   <Pencil className="w-4 h-4 text-blue-500" /> Bearbeiten
                 </DropdownMenuItem>
                 <DropdownMenuItem
+                  className="rounded-xl gap-2 font-bold cursor-pointer relative"
+                  asChild
+                >
+                  <label className="flex items-center w-full">
+                    <ImageIcon className="w-4 h-4 text-emerald-500 mr-2" /> Bild hochladen
+                    <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
+                  </label>
+                </DropdownMenuItem>
+                <DropdownMenuItem
                   onClick={() => onDelete?.(prompt.id)}
                   className="rounded-xl gap-2 font-bold text-red-500 focus:text-red-500 cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" /> Löschen
                 </DropdownMenuItem>
+
               </DropdownMenuContent>
             </DropdownMenu>
 
