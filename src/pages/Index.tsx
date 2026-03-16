@@ -84,22 +84,22 @@ export default function Index() {
       </header>
 
       <main className="container mx-auto px-4 py-12 relative">
-        <div className="relative max-w-6xl mx-auto mb-20 p-12 md:p-20 rounded-[3rem] overflow-hidden group shadow-2xl shadow-primary/10">
+        <div className="relative max-w-6xl mx-auto mb-20 p-8 md:p-24 rounded-[3rem] overflow-hidden group shadow-2xl shadow-primary/20">
           {/* Hero Background Image */}
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1614728263952-84ea206f99b6?q=80&w=2574&auto=format&fit=crop"
-              alt="Futuristic Photorealistic Background"
+              src="/hero-bg.png"
+              alt="Futuristic Photorealistic Creative Studio"
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/40 to-background/90 backdrop-blur-[1px]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-black/70" />
           </div>
 
-          <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tight leading-[1.1]">
-              Gestalte die <span className="text-primary italic drop-shadow-sm">Zukunft</span> deiner <span className="text-secondary drop-shadow-sm">Bilder</span>
+          <div className="relative z-10 max-w-4xl mx-auto text-center space-y-10">
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tight leading-[1.1] text-white drop-shadow-2xl">
+              Gestalte die <span className="text-primary italic drop-shadow-lg">Zukunft</span> deiner <span className="text-secondary drop-shadow-lg">Bilder</span>
             </h2>
-            <p className="text-lg md:text-2xl text-foreground/80 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-lg md:text-2xl text-white/90 max-w-2xl mx-auto font-bold leading-relaxed drop-shadow-md bg-black/10 backdrop-blur-md rounded-[2rem] p-6 border border-white/10">
               Wähle deine Kamera, den Film-Look und die Perspektive. Unser Generator erstellt dir den perfekten, detailreichen Prompt.
             </p>
           </div>
