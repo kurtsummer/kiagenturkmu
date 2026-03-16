@@ -82,11 +82,11 @@ export default function Index() {
           {/* Hero Background Image */}
           <div className="absolute inset-0 z-0">
             <img
-              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
-              alt="Creative Background"
+              src="https://images.unsplash.com/photo-1614728263952-84ea206f99b6?q=80&w=2574&auto=format&fit=crop"
+              alt="Futuristic Photorealistic Background"
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background/95 backdrop-blur-[2px]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/40 to-background/90 backdrop-blur-[1px]" />
           </div>
 
           <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
