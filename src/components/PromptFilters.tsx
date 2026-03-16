@@ -21,7 +21,7 @@ interface PromptFiltersProps {
 }
 
 export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersProps) {
-  const updateFilter = (key: keyof FilterState, value: string) => {
+  const updateFilter = (key: keyof Omit<FilterState, 'onlyFavorites'>, value: string) => {
     setFilters({ ...filters, [key]: value === "all" ? "" : value });
   };
 
@@ -31,7 +31,7 @@ export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersPro
   const perspectives: Perspective[] = ["Weitwinkel", "Nahaufnahme", "Vogelperspektive", "Froschperspektive", "Draufsicht", "Augenhöhe", "Schräger Winkel", "Makro", "Extreme Nahaufnahme", "Totale", "Halbtotale", "Ego-Perspektive"];
 
   return (
-    <div className="bg-white/50 dark:bg-zinc-950/50 backdrop-blur-xl border-2 border-primary/5 rounded-[2.5rem] p-8 shadow-2xl shadow-primary/5 mb-12 space-y-8 animate-in slide-in-from-top-4 duration-700">
+    <div className="bg-white/50 dark:bg-zinc-950/50 backdrop-blur-xl border-2 border-primary/5 rounded-[2.5rem] p-8 shadow-2xl shadow-primary/5 mb-12 space-y-8 animate-in slide-in-from-top-4 duration-700 w-full">
       <div className="relative group">
         <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
           <Search className="text-primary w-5 h-5 group-focus-within:scale-110 transition-transform" />
@@ -53,7 +53,10 @@ export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersPro
         ].map((filter) => (
           <div key={filter.key} className="space-y-2">
             <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-2">{filter.label}</Label>
-            <Select value={filters[filter.key as keyof FilterState] || "all"} onValueChange={(v) => updateFilter(filter.key as keyof FilterState, v)}>
+            <Select
+              value={(filters[filter.key as keyof Omit<FilterState, 'onlyFavorites'>] as string) || "all"}
+              onValueChange={(v) => updateFilter(filter.key as keyof Omit<FilterState, 'onlyFavorites'>, v)}
+            >
               <SelectTrigger className="rounded-2xl h-14 border-2 border-primary/5 bg-white/80 dark:bg-black/20 hover:border-primary/20 transition-all font-bold">
                 <SelectValue placeholder={`Alle ${filter.label}`} />
               </SelectTrigger>
