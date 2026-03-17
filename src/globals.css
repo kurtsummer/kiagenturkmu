@@ -4,85 +4,49 @@
 
 @layer base {
   :root {
-    /* Light Green Concept */
-    --background: 145 30% 98%;
-    --foreground: 145 50% 10%;
+    /* Modern AI Marketing Branding */
+    --background: 228 33% 98%; /* #F8F9FC */
+    --foreground: 223 37% 19%; /* #1F2A44 */
 
     --card: 0 0% 100%;
-    --card-foreground: 145 50% 10%;
+    --card-foreground: 223 37% 19%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 145 50% 10%;
+    --popover-foreground: 223 37% 19%;
 
-    --primary: 142 76% 36%;
+    --primary: 223 37% 19%; /* #1F2A44 */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 158 64% 52%;
+    --secondary: 246 88% 66%; /* #6D5EF5 */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 145 20% 94%;
-    --muted-foreground: 145 15% 45%;
+    --muted: 228 33% 94%;
+    --muted-foreground: 223 15% 45%;
 
-    --accent: 174 75% 39%;
+    --accent: 246 88% 66%; /* #6D5EF5 */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 142 20% 90%;
-    --input: 142 20% 90%;
-    --ring: 142 76% 36%;
+    --border: 228 20% 90%;
+    --input: 228 20% 90%;
+    --ring: 246 88% 66%;
 
-    --radius: 1.25rem;
+    --radius: 1rem;
 
-    --sidebar-background: 145 10% 98%;
-    --sidebar-foreground: 145 50% 20%;
-    --sidebar-primary: 142 76% 36%;
+    --sidebar-background: 228 33% 98%;
+    --sidebar-foreground: 223 37% 19%;
+    --sidebar-primary: 223 37% 19%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 145 20% 94%;
-    --sidebar-accent-foreground: 142 76% 36%;
-    --sidebar-border: 142 20% 90%;
-    --sidebar-ring: 142 76% 36%;
+    --sidebar-accent: 246 88% 66%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 228 20% 90%;
+    --sidebar-ring: 246 88% 66%;
   }
 
-  .dark {
-    --background: 145 40% 4%;
-    --foreground: 145 10% 98%;
-
-    --card: 145 40% 6%;
-    --card-foreground: 145 10% 98%;
-
-    --popover: 145 40% 6%;
-    --popover-foreground: 145 10% 98%;
-
-    --primary: 142 70% 45%;
-    --primary-foreground: 145 40% 4%;
-
-    --secondary: 158 60% 50%;
-    --secondary-foreground: 145 40% 4%;
-
-    --muted: 145 30% 12%;
-    --muted-foreground: 145 10% 65%;
-
-    --accent: 174 70% 45%;
-    --accent-foreground: 145 40% 4%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 145 10% 98%;
-
-    --border: 145 30% 15%;
-    --input: 145 30% 15%;
-    --ring: 142 70% 45%;
-    
-    --sidebar-background: 145 40% 8%;
-    --sidebar-foreground: 145 10% 98%;
-    --sidebar-primary: 142 70% 45%;
-    --sidebar-primary-foreground: 145 40% 4%;
-    --sidebar-accent: 145 30% 12%;
-    --sidebar-accent-foreground: 145 10% 98%;
-    --sidebar-border: 145 30% 15%;
-    --sidebar-ring: 142 70% 45%;
-  }
+  /* No dark mode for now as per instructions "don't add features beyond what was asked" 
+     but keeping the structure if needed later. */
 }
 
 @layer base {
@@ -92,5 +56,21 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
 }
