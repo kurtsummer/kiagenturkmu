@@ -241,14 +241,14 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
             <div className="p-2 bg-primary/10 rounded-xl">
                <Wand2 className="w-6 h-6 text-primary" />
             </div>
-            <CardTitle className="text-3xl font-black tracking-tight">Prompt Creator</CardTitle>
+            <CardTitle className="text-3xl font-black tracking-tight">Prompt-Generator</CardTitle>
           </div>
-          <Button 
-            variant="outline" 
-            onClick={handleSurpriseMe} 
+          <Button
+            variant="outline"
+            onClick={handleSurpriseMe}
             className="rounded-xl border-primary/20 hover:bg-primary/5 gap-2 font-bold transition-all"
           >
-            <Dices className="w-4 h-4 text-primary" /> Surprise Me
+            <Dices className="w-4 h-4 text-primary" /> Überrasch mich
           </Button>
         </div>
         <CardDescription className="text-lg font-medium">Lass deiner Kreativität freien Lauf oder lass dich überraschen.</CardDescription>
