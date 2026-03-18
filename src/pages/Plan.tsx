@@ -549,18 +549,15 @@ const Plan = () => {
       return {
         day,
         meals: [
-          { 
-            type: "Frühstück", 
+          {
             ...breakfasts[index % breakfasts.length],
             type: "Frühstück"
           },
-          { 
-            type: "Mittagessen", 
+          {
             ...mainShuffled[index % mainShuffled.length],
             type: "Mittagessen"
           },
-          { 
-            type: "Abendessen", 
+          {
             ...mainShuffled[(index + 7) % mainShuffled.length],
             type: "Abendessen"
           }
